@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.23;
 
 /**
 * @dev A library for working with mutable byte buffers in Solidity.
