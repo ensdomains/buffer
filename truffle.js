@@ -16,15 +16,15 @@ module.exports = {
   },
   mocha: {
     reporter: 'eth-gas-reporter',
-    reporterOptions : {
+    reporterOptions: {
       currency: 'USD',
       gasPrice: 1
     }
   },
-/*  solc: {
+  solc: {
     optimizer: {
       enabled: true,
       runs: 200
     }
-  }*/
+  }
 };

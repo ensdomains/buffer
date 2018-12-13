@@ -1,4 +1,4 @@
-pragma solidity >=0.5.0;
+pragma solidity >0.4.18;
 
 import "truffle/Assert.sol";
 import "./../contracts/Buffer.sol";
