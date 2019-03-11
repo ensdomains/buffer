@@ -35,7 +35,7 @@ library Buffer {
             let ptr := mload(0x40)
             mstore(buf, ptr)
             mstore(ptr, 0)
-            mstore(0x40, add(ptr, capacity))
+            mstore(0x40, add(32, add(ptr, capacity)))
         }
         return buf;
     }
