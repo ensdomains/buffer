@@ -91,7 +91,7 @@ library Buffer {
     function write(buffer memory buf, uint off, bytes memory data, uint len) internal pure returns(buffer memory) {
         require(len <= data.length);
 
-        if (off + len + buf.buf.length > buf.capacity) {
+        if (off + len > buf.capacity) {
             resize(buf, max(buf.capacity, len + off) * 2);
         }
 
