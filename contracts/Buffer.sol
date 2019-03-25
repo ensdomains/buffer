@@ -163,7 +163,7 @@ library Buffer {
     * @return The original buffer, for chaining.
     */
     function writeUint8(buffer memory buf, uint off, uint8 data) internal pure returns(buffer memory) {
-        if (off > buf.capacity) {
+        if (off >= buf.capacity) {
             resize(buf, buf.capacity * 2);
         }
 
@@ -205,7 +205,7 @@ library Buffer {
     */
     function write(buffer memory buf, uint off, bytes32 data, uint len) private pure returns(buffer memory) {
         if (len + off > buf.capacity) {
-            resize(buf, max(buf.capacity, len) * 2);
+            resize(buf, (len + off) * 2);
         }
 
         uint mask = 256 ** len - 1;
@@ -270,7 +270,7 @@ library Buffer {
     */
     function writeInt(buffer memory buf, uint off, uint data, uint len) private pure returns(buffer memory) {
         if (len + off > buf.capacity) {
-            resize(buf, max(buf.capacity, len + off) * 2);
+            resize(buf, (len + off) * 2);
         }
 
         uint mask = 256 ** len - 1;
