@@ -62,4 +62,23 @@ contract TestBuffer {
       Assert.equal(buf.buf.length, 5, "Expected buffer length to be 5");
       Assert.equal(string(buf.buf), "first", "Unexpected buffer contents");
     }
+
+    function testBufferAppendInt() public {
+      Buffer.buffer memory buf;
+      Buffer.init(buf, 256);
+      buf.append("Hello");
+      buf.appendInt(0x2c20, 2);
+      buf.append("world!");
+      Assert.equal(string(buf.buf), "Hello, world!", "Unexpected buffer contents.");
+    }
+
+    function testBufferResizeAppendInt() public {
+      Buffer.buffer memory buf;
+      Buffer.init(buf, 32);
+      buf.append("01234567890123456789012345678901");
+      buf.appendInt(0x2020, 2);
+      Assert.equal(buf.capacity, 96, "Expected buffer capacity to be 96");
+      Assert.equal(buf.buf.length, 34, "Expected buffer length to be 34");
+      Assert.equal(string(buf.buf), "01234567890123456789012345678901  ", "Unexpected buffer contents");
+    }
 }
