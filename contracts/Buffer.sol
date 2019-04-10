@@ -287,4 +287,15 @@ library Buffer {
         }
         return buf;
     }
+
+    /**
+     * @dev Appends a byte to the end of the buffer. Resizes if doing so would
+     * exceed the capacity of the buffer.
+     * @param buf The buffer to append to.
+     * @param data The data to append.
+     * @return The original buffer.
+     */
+    function appendInt(buffer memory buf, uint data, uint len) internal pure returns(buffer memory) {
+        return writeInt(buf, buf.buf.length, data, len);
+    }
 }
