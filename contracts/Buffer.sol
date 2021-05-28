@@ -1,5 +1,4 @@
-pragma solidity >=0.8.4;
-import "hardhat/console.sol";
+pragma solidity ^0.8.4;
 
 /**
 * @dev A library for working with mutable byte buffers in Solidity.
