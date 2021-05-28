@@ -1,6 +1,6 @@
 {
   "name": "@ensdomains/buffer",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "requires": true,
   "lockfileVersion": 1,
   "devDependencies": {
