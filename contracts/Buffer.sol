@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: BSD-2-Clause
 pragma solidity ^0.8.4;
 
 /**
@@ -297,6 +298,7 @@ library Buffer {
      * exceed the capacity of the buffer.
      * @param buf The buffer to append to.
      * @param data The data to append.
+     * @param len The number of bytes to write (right-aligned).
      * @return The original buffer.
      */
     function appendInt(buffer memory buf, uint data, uint len) internal pure returns(buffer memory) {
