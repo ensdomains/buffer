@@ -30,12 +30,24 @@ contract TestBuffer {
         );
     }
 
+    function testBufferWriteUint8WithOffset() public pure {
+        Buffer.buffer memory buf;
+        Buffer.init(buf, 32);
+        buf.writeUint8(64, 0x2A); // first 64 bytes are zero, followed by 0x2A
+        for (uint i = 0; i < buf.buf.length - 1; i++) {
+          require(buf.buf[i] == 0, "Leading bytes must be zero");
+        }
+        require(buf.capacity == 160, "Expected buffer capacity to be 160");
+        require(buf.buf.length == 65, "Expected buffer length to be 65");
+        require(buf.buf[64] == 0x2A, "Last byte must be 0x2A");
+    }
+
     function testBufferResizeAppendUint8() public pure {
         Buffer.buffer memory buf;
         Buffer.init(buf, 32);
         buf.append("01234567890123456789012345678901");
         buf.appendUint8(0x20);
-        require(buf.capacity == 64, "Expected buffer capacity to be 64");
+        require(buf.capacity == 96, "Expected buffer capacity to be 96");
         require(buf.buf.length == 33, "Expected buffer length to be 33");
         require(
           keccak256(abi.encodePacked(string(buf.buf))) == keccak256(abi.encodePacked("01234567890123456789012345678901 ")),
