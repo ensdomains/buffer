@@ -167,22 +167,21 @@ library Buffer {
     */
     function writeUint8(buffer memory buf, uint off, uint8 data) internal pure returns(buffer memory) {
         if (off >= buf.capacity) {
-            resize(buf, buf.capacity * 2);
+            resize(buf, max(buf.capacity, off + 1) * 2);
         }
 
         assembly {
             // Memory address of the buffer data
             let bufptr := mload(buf)
-            // Length of existing buffer data
-            let buflen := mload(bufptr)
             // Address = buffer address + sizeof(buffer length) + off
             let dest := add(add(bufptr, off), 32)
             mstore8(dest, data)
             // Update buffer length if we extended it
-            if eq(off, buflen) {
-                mstore(bufptr, add(buflen, 1))
+            if gt(add(off, 1), mload(bufptr)) {
+                mstore(bufptr, add(off, 1))
             }
         }
+
         return buf;
     }
 
@@ -295,7 +294,7 @@ library Buffer {
 
     /**
      * @dev Appends a byte to the end of the buffer. Resizes if doing so would
-     * exceed the capacity of the buffer.
+     *      exceed the capacity of the buffer.
      * @param buf The buffer to append to.
      * @param data The data to append.
      * @param len The number of bytes to write (right-aligned).
