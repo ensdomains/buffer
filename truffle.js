@@ -21,6 +21,11 @@ module.exports = {
       gasPrice: 1
     }
   },
+  compilers: {
+    solc: {
+      version: "native"
+    }
+  },
   solc: {
     optimizer: {
       enabled: true,
