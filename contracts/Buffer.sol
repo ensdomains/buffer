@@ -12,7 +12,7 @@ pragma solidity ^0.8.4;
 library Buffer {
     /**
     * @dev Represents a mutable buffer. Buffers have a current value (buf) and
-    *      a capacity. The capacity may be longer than the current value, in
+    *      a capacity. The capacity may be longer than the current buf length, in
     *      which case it can be extended without the need to allocate more memory.
     */
     struct buffer {
