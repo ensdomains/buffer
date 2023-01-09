@@ -1,6 +1,6 @@
 {
-  "name": "@ensdomains/buffer",
-  "version": "0.1.0",
+  "name": "@tomochain-name-service/buffer",
+  "version": "0.0.1",
   "requires": true,
   "lockfileVersion": 1,
   "devDependencies": {
@@ -22,7 +22,7 @@
     "lint": "npx hardhat check",
     "build": "npx hardhat compile",
     "prepublishOnly": "yarn build",
-    "pub": "yarn publish --access public"
+    "pub": "npm publish --access public"
   },
   "dependencies": {
     "@nomiclabs/hardhat-truffle5": "^2.0.0"

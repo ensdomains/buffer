@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: BSD-2-Clause
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.0;
 
 /**
 * @dev A library for working with mutable byte buffers in Solidity.
