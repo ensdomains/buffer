@@ -10,7 +10,7 @@
     "@nomiclabs/hardhat-web3": "^2.0.0",
     "chai": "^4.3.6",
     "eth-gas-reporter": "^0.2.24",
-    "ethereum-waffle": "^3.3.0",
+    "ethereum-waffle": "^4.0.10",
     "ethers": "^5.1.4",
     "hardhat": "^2.3.0",
     "solium": "^1.0.4",
