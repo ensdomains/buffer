@@ -1,10 +1,11 @@
 {
   "name": "@tomochain-name-service/buffer",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "requires": true,
   "lockfileVersion": 1,
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-truffle5": "^2.0.7",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@nomiclabs/hardhat-web3": "^2.0.0",
     "chai": "^4.3.6",
@@ -24,7 +25,5 @@
     "prepublishOnly": "yarn build",
     "pub": "npm publish --access public"
   },
-  "dependencies": {
-    "@nomiclabs/hardhat-truffle5": "^2.0.0"
-  }
+  "dependencies": {}
 }
