@@ -110,5 +110,11 @@ contract TestBuffer {
         keccak256(abi.encodePacked(string(buf.buf))) == keccak256(abi.encodePacked("01234567890123456789012345678901  ")),
         "Unexpected buffer contents."
       );
+      buf.appendInt(0x2020202020202020202020202020202020202020202020202020202020202020, 32);
+      require(buf.buf.length == 66, "Expected buffer length to be 66");
+      require(
+        keccak256(abi.encodePacked(string(buf.buf))) == keccak256(abi.encodePacked("01234567890123456789012345678901                                  ")),
+        "Unexpected buffer contents."
+      );
     }
 }
