@@ -243,16 +243,18 @@ library Buffer {
             resize(buf, newCapacity * 2);
         }
 
-        uint mask = (256 ** len) - 1;
-        assembly {
-            // Memory address of the buffer data
-            let bufptr := mload(buf)
-            // Address = buffer address + sizeof(buffer length) + newCapacity
-            let dest := add(bufptr, newCapacity)
-            mstore(dest, or(and(mload(dest), not(mask)), data))
-            // Update buffer length if we extended it
-            if gt(newCapacity, mload(bufptr)) {
-                mstore(bufptr, newCapacity)
+        unchecked {
+            uint mask = (256 ** len) - 1;
+            assembly {
+                // Memory address of the buffer data
+                let bufptr := mload(buf)
+                // Address = buffer address + sizeof(buffer length) + newCapacity
+                let dest := add(bufptr, newCapacity)
+                mstore(dest, or(and(mload(dest), not(mask)), data))
+                // Update buffer length if we extended it
+                if gt(newCapacity, mload(bufptr)) {
+                    mstore(bufptr, newCapacity)
+                }
             }
         }
         return buf;
